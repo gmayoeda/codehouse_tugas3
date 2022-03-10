@@ -1,16 +1,13 @@
-import 'package:codehouse_tugas3/signuppage.dart';
 import 'package:flutter/material.dart';
 
-import 'custom/bottomnav.dart';
-
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class SignupPage extends StatefulWidget {
+  const SignupPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupPageState extends State<SignupPage> {
   bool _secureText = true;
 
   showHide() {
@@ -31,20 +28,29 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Log in',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+                    Row(
+                      children: [
+                        InkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Icon(Icons.arrow_back_ios)),
+                        Text(
+                          'Sign up',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.w400),
+                        ),
+                      ],
                     ),
                     SizedBox(height: 8),
                     Text(
-                      'Sign In to continue',
+                      'Register to create an account',
                       style:
                           TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
                     ),
                     SizedBox(height: 28),
                     Text(
-                      'Username',
+                      'Name',
                       style:
                           TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
                     ),
@@ -60,6 +66,28 @@ class _LoginPageState extends State<LoginPage> {
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
                           hintText: 'Username',
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    Text(
+                      'Email',
+                      style:
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                    ),
+                    Container(
+                      height: 45,
+                      margin: new EdgeInsets.only(top: 8.0),
+                      padding: EdgeInsets.symmetric(horizontal: 14),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFA9BCCF).withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: const InputDecoration(
+                          hintText: 'Email address',
                           border: InputBorder.none,
                         ),
                       ),
@@ -93,23 +121,14 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         Expanded(
                           child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        BottomNav(),
-                                  ),
-                                  (route) => false,
-                                );
-                              },
+                              onPressed: () {},
                               style: ElevatedButton.styleFrom(
                                 shape: new RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(10.0),
                                 ),
                                 minimumSize: Size(324.0, 45.0),
                               ),
-                              child: Text("Log in",
+                              child: Text("Sign up",
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500))),
@@ -122,19 +141,16 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have an account? ",
+                  Text("Already have an account? ",
                       style: TextStyle(
                           color: Color(0xFF6A6A6A),
                           fontSize: 14,
                           fontWeight: FontWeight.w500)),
                   InkWell(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignupPage()));
+                      Navigator.pop(context);
                     },
-                    child: Text("Sign up",
+                    child: Text("Log in",
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.w500)),
                   ),
