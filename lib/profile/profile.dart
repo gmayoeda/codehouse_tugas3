@@ -1,4 +1,7 @@
+import 'package:codehouse_tugas3/loginpage.dart';
+import 'package:codehouse_tugas3/profile/otherinfo.dart';
 import 'package:codehouse_tugas3/profile/profileheader.dart';
+import 'package:codehouse_tugas3/profile/profileaccount.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -19,56 +22,39 @@ class _ProfilePageState extends State<ProfilePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ProfileHeader(),
-              SizedBox(
-                height: 36.5,
-              ),
-              Text(
-                "Account",
-                style: TextStyle(
-                    fontStyle: FontStyle.italic,
-                    color: Color(0xff5f6f8c),
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500),
-              ),
-              SizedBox(width: 6),
-              InkWell(
-                highlightColor: Color(0xff5f6f8c),
-                borderRadius: BorderRadius.circular(10),
-                onTap: () {},
-                child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  width: double.infinity,
-                  height: 45,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFFFFFFF).withOpacity(0.80),
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.10),
-                        blurRadius: 3.0,
-                        offset: Offset(0.0, 2.0),
+              SizedBox(height: 36.5),
+              ProfileAccount(),
+              SizedBox(height: 18),
+              OtherInfo(),
+              SizedBox(height: 25),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: ElevatedButton.icon(
+                      icon: Icon(Icons.logout_outlined),
+                      label: Text("Log Out",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w500)),
+                      onPressed: () {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => LoginPage(),
+                          ),
+                          (route) => false,
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFFEC5F70),
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(10.0),
+                        ),
+                        minimumSize: Size(324.0, 45.0),
                       ),
-                    ],
+                    ),
                   ),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'assets/icons/User Settings.png',
-                        width: 30,
-                        height: 30,
-                        color: Colors.grey[600],
-                      ),
-                      SizedBox(width: 6),
-                      Text(
-                        'Account Setting',
-                        style: TextStyle(
-                            color: Colors.grey[700],
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ],
-                  ),
-                ),
+                ],
               ),
             ],
           ),
