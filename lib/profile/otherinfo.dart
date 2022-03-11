@@ -127,8 +127,7 @@ class OtherInfo extends StatelessWidget {
         ),
         SizedBox(height: 8),
         InkWell(
-          focusColor: Colors.amberAccent,
-          highlightColor: Colors.amberAccent,
+          highlightColor: Color(0xff5f6f8c),
           borderRadius: BorderRadius.circular(10),
           onTap: () {},
           child: Container(
